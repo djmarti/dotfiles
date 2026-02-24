@@ -1,0 +1,14 @@
+application/pdf; zathura '%s'; test=test "$DISPLAY" != ""; description=Portable Document Format; nametemplate=%s.pdf
+application/x-pdf; zathura'%s'; test=test "$DISPLAY" != ""; description=Portable Document Format; nametemplate=%s.pdf
+application/ps; zathura '%s'; test=test "$DISPLAY" != ""; description=Postscript Document; nametemplate=%s.ps
+application/x-ps; zathura'%s'; test=test "$DISPLAY" != ""; description=Postscript Documen; nametemplate=%s.ps
+image/vnd.djvu; zathura '%s'; test=test "$DISPLAY" != ""; description=DejaVu Document; nametemplate=%s.djvu
+image/gif; feh '%s'; test=test -n "$DISPLAY" ; description=GIF Image; nametemplate=%s.gif
+image/jpeg; feh '%s'; test=test -n "$DISPLAY" ; description=JPEG Image; nametemplate=%s.jpeg
+image/png; feh '%s'; test=test -n "$DISPLAY" ; description=PNG Image; nametemplate=%s.png
+image/tiff; feh '%s'; test=test -n "$DISPLAY" ; description=TIFF Image; nametemplate=%s.tiff
+text/html; firefox %s; needsterminal;
+text/html; lynx -dump -force_html %s; needsterminal; copiousoutput;
+text/calendar; mutt-ics; copiousoutput;
+application/ics; mutt-ics; copiousoutput;
+#text/html; elinks -dump -eval "set document.codepage.assume = %{charset}" %s; needsterminal; copiousoutput;

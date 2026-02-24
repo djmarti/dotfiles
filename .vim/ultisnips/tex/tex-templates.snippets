@@ -1,0 +1,38 @@
+snippet template "Template: two columns" b
+\documentclass[10pt,a4paper,oneside]{article}
+
+\usepackage{graphicx}
+\usepackage[dvipsnames,cmyk]{xcolor}
+\usepackage[numbers,square]{natbib}
+\usepackage[hyperfigures,breaklinks,colorlinks]{hyperref}
+\usepackage[small]{titlesec}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage[hmargin=1.5cm,vmargin={1.4cm,1.9cm}]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{multicol}
+\usepackage{booktabs} % for professional tables
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{dmarti}
+
+\definecolor{blau}{rgb}{0.0,0.26,0.46} % My blue default
+\definecolor{gray70}{gray}{0.3}   % gray model: 0=black, 1=white
+
+\def\radius{.7mm}
+
+\setlength{\columnsep}{8mm}
+
+\begin{document}
+\begin{center}
+  {\LARGE $1}\\\\[2mm]
+  {\large Daniel Martí}\\\\[.8mm]
+\end{center}
+
+\vspace{4mm}
+\begin{multicols}{2}
+    $2
+\end{multicols}
+\end{document}
+endsnippet

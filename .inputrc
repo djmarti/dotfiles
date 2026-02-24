@@ -1,0 +1,13 @@
+set show-all-if-ambiguous on
+set completion-ignore-case on
+set bell-style none
+set editing-mode vi
+set keymap vi-command
+set keymap vi-insert
+# insert mode
+"\C-p": history-search-backward
+"\C-w": backward-kill-word
+"\C-l": clear-screen
+#"gg": beginning-of-history
+#"G": end-of-history
+# command mode

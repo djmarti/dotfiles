@@ -1,0 +1,178 @@
+# $Id: sample.muttrc,v 3.3 2003/04/02 08:43:24 roessler Exp $
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# The format of this file is one command per line.  Everything after a pound
+# sign (#) is a comment, unless a backward slash (\) precedes it.  Note: In
+# folder-hook and send-hook you need to account for two levels of dequoting
+# (see manual).
+#
+# Note: $folder should be set _before_ any other path vars where `+' or ` = '
+# is used because paths are expanded when parsed
+
+
+# directories and commands
+set realname = "Dani Martí"
+set from = "daniel.marti@ens.fr"
+set alias_file = ~/.mail_aliases
+set certificate_file = ~/.mutt/certificates # where to store certs
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies # where to store bodies
+set mailcap_path = "~/.mailcap:/etc/mailcap"
+set signature = ~/.mutt/signature
+set tmpdir = ~/tmp
+set editor = "vim +':set textwidth=60' +':set linebreak' +2 -c 'startinsert!'"
+set query_command = "abook --mutt-query '%s'"
+set print_command = "mymuttprint"
+
+#source "gpg2 -dq $HOME/.passwd.gpg |"
+
+# maildir settings
+set mbox_type = Maildir
+set folder = '~/Mail/ENS/'
+set spoolfile = '+INBOX'
+set sendmail = "/usr/bin/msmtp"
+set use_envelope_from=yes
+set mbox = "+all_mail"
+set postponed = "+drafts"
+set record = "+sent-mail"
+mailboxes +INBOX\
+            +sent-mail\
+            +temporary/search
+    # macro generic "<Esc>1" '<sync-mailbox><enter-command>source ~/.mutt/account_ens<enter><change-folder>!<enter>'
+    # macro generic "<Esc>2" '<sync-mailbox><enter-command>source ~/.mutt/account_gmail<enter><change-folder>!<enter>'
+
+
+    
+# General options
+set auto_tag                # always operate on tagged messages
+set noconfirmappend         # don't ask me if i want to append to mailboxes
+set confirmcreate           # prompt when creating new files
+set copy = yes              # always save a copy of outgoing messages
+set delete = yes            # purge deleted messages without asking
+set help = no               # don't show the help lines
+set mail_check = 180        # how often to poll for new mail
+set move = yes              # don't ask about moving messages, just do it
+unset markers               # don't put '+' at the beginning of wrapped lines
+set nomark_old              # i don't care about whether a message is old
+set print = ask-yes         # ask me if I really want to print messages
+set noprompt_after          # ask me for a command after the external pager exits
+set quit = ask-yes
+set nosave_empty            # remove files when no messages are left
+set menu_scroll             # no implicit next-page/prev-page
+set pager_index_lines = 10  # how many index lines to show in the pager
+set pager_context = 5       # no. of lines of context to give when scrolling
+set pager_stop              # don't move to the next message on next-page
+set pipe_decode             # strip headers and eval mimes when piping
+set pgp_verify_sig = no     # don't automatically verify message signatures
+set smart_wrap
+set sort = threads          # primary sorting method
+set sort_aux= last-date-received
+unset sort_re
+set sort_browser = reverse-date    # how to sort files in the dir browser
+#set reverse_alias          # attempt to look up my names for people
+set thorough_search         # strip headers and eval mimes before searching
+set thread_received         # sort threads by date received, not sent
+set tilde                   # virtual lines to pad blank lines in the pager
+set timeout = 10            # idle time before scanning
+set write_inc = 25          # show progress while writing mailboxes
+set net_inc=5               # display download progress every 5K
+
+# Enriched messages
+auto_view application/x-gunzip
+auto_view application/x-gzip
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+# formats and regexps
+set alias_format = "%4n %t %-20a %r"
+set date_format = "%a %d %b %Y at %H:%M:%S (%z)"
+set index_format = "%4C %Z %[!%d %b %Y] %-20.20F %s"
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+# set status_format = "-%r- ──────┴────  %f %m%?n? [+%n]?%?d?t? [+%n]?%?d? [-%d]?%?t? [*%t]? /%?p?───/ %p waiting to send /?──(%P)───"
+set status_format="%f: %m messages (%l)%?n?, %n new?%?V?, %M (%L) matching \"%V\"?. %> %?b? %b other
+mailboxes have new mail!? %v"
+set pager_format = "%-8.8i %[!%a %b %d %R]"
+#set pager_format = "-%S- %-20.20f %s"    # format of the pager status bar
+set folder_format = "%2C %t %8s %d %N %f"
+
+# Composing mail
+set autoedit                        # go to the editor right away when composing
+                                    # (skip the prompts for To: and Subject:)
+set edit_headers = yes              # let me edit the message header when composing
+set fast_reply                      # skip initial prompts when replying
+set forward_format = "Fwd: %s"      # subject to use when forwarding messages
+set forward_quote                   # quote the header and body of forward msgs
+set include                         # always include messages when replying
+set realname = "Dani Martí"
+set reply_to                        # always use reply-to, not From:
+set attribution = "On %{%A %d %B %Y at %H:%M (%z)}, %n wrote:" # how to attribute replies
+set send_charset = "us-ascii:iso-8859-1:iso-8859-15:utf-8"
+charset-hook x-unknown ISO-8859-1 # John's mail
+
+# Headers to show
+unhdr_order *                
+ignore *        # this means "ignore all lines by default"
+unignore    from: to: cc: date: subject: mail-followup-to:
+hdr_order   From To Cc Date Subject Cc Mail-Followup-To
+
+# Color definitions
+source ~/.mutt/colors.`tty -s && tput colors || echo 8`
+# source ~/.mutt/mutt-colors-solarized-light-16.muttrc
+mono quoted bold # attributes when using a mono terminal
+
+# Aliases
+source $alias_file
+
+# Bindings!
+# these just give me headaches
+bind index,pager \#    noop
+bind index i           noop
+bind index,pager c     mail  # compose mail as in gmail
+bind index,pager m     change-folder  # switch with previous one
+
+# bindings
+bind pager i           exit
+bind pager /           search
+bind pager gg          top
+bind pager G           bottom
+bind index gg          first-entry
+bind index G           last-entry
+#bind pager K           previous-undeleted
+#bind pager J           next-undeleted
+#bind index K           previous-unread
+#bind index J           next-unread
+bind index,pager R     group-reply
+macro index Z "<shell-escape>mbsync -q fastmail-ENS; notmuch new<enter>" 'synchronize with IMAP server, update database'
+
+# macros
+macro index h "c?" "view folders"
+macro index \Cr "<tag-pattern>all<enter><tag-prefix><clear-flag>N<untag-pattern>all<enter>" 'mark all as read'
+macro index B "<limit>~b " 'search message bodies'
+macro index P "<pipe-message>cat > ~/" 'save message as' 
+macro index "\Cb" |urlview\n    
+
+# abook stuff
+macro generic,index,pager \Ca "<shell-escape>abook<return>" "launch abook"
+macro index,pager A "<pipe-message>abook --add-email<Return>" 'add the sender address to abook'
+
+# notmuch stuff
+macro index,browser \e/ "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch.py -G ~/Mail/ENS/temp/search<enter><change-folder-readonly>~/Mail/ENS/temp/search<enter>" \
+"search mail (using notmuch)"
+
+# Dump all headers when printing
+macro index p "<display-toggle-weed> <print-message> <display-toggle-weed> <exit>"
+macro pager p "<display-toggle-weed> <print-message> <display-toggle-weed>"
+
+# Show documentation when pressing F1
+macro generic,index,pager <f1> "!zless /usr/share/doc/mutt/manual.txt.gz\n" "Show Mutt documentation"
+
+# # Gmail-style keyboard shortcuts
+macro index,pager gl "<change-folder>"
+macro index,pager gi "<change-folder> =INBOX<enter>" "Go to inbox"
+macro index,pager ga "<change-folder> =all_mail<enter>" "Go to all mail"
+macro index,pager gd "<change-folder> =drafts<enter>" "Go to drafts"
+macro index,pager gt "<change-folder> =sent-mail<enter>" "Go to sent mail"
+
+push V        #Version de mutt au démarrage

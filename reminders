@@ -1,0 +1,81 @@
+SET Mon 0
+SET Tue 1
+SET Wed 2
+SET Thu 3
+SET Fri 4
+SET Sat 5
+SET Sun 6
+
+SET Jan 1
+SET Feb 2
+SET Mar 3
+SET Apr 4
+SET May 5
+SET Jun 6
+SET Jul 7
+SET Aug 8
+SET Sep 9
+SET Oct 10
+SET Nov 11
+SET Dec 12
+
+SET  Week_1              1
+SET  Week_2              8
+SET  Week_3             15
+SET  Week_4             22
+FSET _last(mo)          "1 " + MON((mo%12)+1)+" --7"
+
+SET Esc   CHAR(27)
+SET Nrm   Esc + "[0m"
+SET Blk   Esc + "[0;30m"
+SET Red   Esc + "[0;31m"
+SET Grn   Esc + "[0;32m"
+SET Ylw   Esc + "[0;33m"
+SET Blu   Esc + "[0;34m"
+SET Mag   Esc + "[0;35m"
+SET Cyn   Esc + "[0;36m"
+SET Wht   Esc + "[0;37m"
+SET Gry   Esc + "[1;30m"
+SET BrRed Esc + "[1;31m"
+SET BrGrn Esc + "[1;32m"
+SET BrYlw Esc + "[1;33m"
+SET BrBlu Esc + "[1;34m"
+SET BrMag Esc + "[1;35m"
+SET BrCyn Esc + "[1;36m"
+SET BrWht Esc + "[1;37m"
+
+BANNER [Blu]%"Reminders for %w, %d%s %m %t%o:[Nrm]%
+#BANNER %
+REM Sat Sun PS SPECIAL SHADE 95
+REM [trigger(realtoday())] SPECIAL SHADE 227 179 226
+
+# include [getenv("HOME")]/.remind/events.txt
+
+# Set longitude/latitude for sunrise/sunset functions
+# New York, Wasington Square
+# SET $LongDeg 73
+# SET $LongMin 59
+# SET $LongSec 41
+# SET $LatDeg 40
+# SET $LatMin 43
+# SET $LatSec 43
+
+# Show Sunrise/Sunset
+#MSG [Gry]%"Sunrise [sunrise(trigdate())]%" [Nrm]%
+#MSG [Gry]%"Sunset  [sunset(trigdate())]%" [Nrm]%
+#REM AT [sunrise()] MSG %"sunrise%" %3
+#REM AT [sunset()] MSG %"sunset%" %3
+# 
+# REM [trigger(moondate(2))] +3 MSG %"%"Next full moon %b.%
+# 
+# FSET isFirstFull(date) \
+# monnum(moondate(2, date)) == monnum(moondate(2, moondate(2, date)+1))
+# REM 1 SATISFY isFirstFull(trigdate())
+# set bluemoon moondate(2, moondate(2, trigdate())+1)
+# 
+# #MSG [Blu]%"[day(bluemoon)] [mon(bluemoon)] [year(bluemoon)] Blue Moon%" [Nrm]%
+# REM [TRIGGER(moondate(0))] MSG "New Moon"
+# REM [TRIGGER(moondate(1))] MSG "First Quarter"
+# REM [TRIGGER(moondate(2))] MSG "Full Moon"
+# REM [TRIGGER(moondate(3))] MSG "Last Quarter"
+# vim: set ft=remind:

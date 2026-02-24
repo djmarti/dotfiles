@@ -1,0 +1,20 @@
+snippet t "Current date"
+# `!v strftime("%Y-%m-%d")`
+
+
+endsnippet
+
+snippet * "italics"
+*${1:${VISUAL}}*$0
+endsnippet
+
+snippet ** "bold"
+**${1:${VISUAL}}**$0
+endsnippet
+
+snippet cd "Enclose code in ticks"
+\`\`\`$1
+${2:${VISUAL}}
+\`\`\`
+$0
+endsnippet

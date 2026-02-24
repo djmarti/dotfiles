@@ -1,0 +1,166 @@
+extends tex-math, tex-templates, tex-greek
+
+snippet emp "Emphasize"
+\emph{${1:${VISUAL}}} ${0}
+endsnippet
+
+snippet bf "Boldface"
+\textbf{${1:${VISUAL}}} ${0}
+endsnippet
+
+snippet vec "Vector"
+\vec{${1:${VISUAL}}} ${0}
+endsnippet
+
+snippet /\_\_/ "Subscript" riA
+_{$1}$0
+endsnippet
+
+snippet /\^\^/ "Superscript" riA
+^{$1}$0
+endsnippet
+
+snippet mk "Math (normal mode)" w
+$${1}$ $0`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+    snip.rv = ' '
+else:
+    snip.rv = ''
+`$2
+endsnippet
+
+snippet dm "Math (display mode)" wi
+\[
+    $1
+\]
+$0
+endsnippet
+
+
+snippet hr "The hyperref package's \href{}{} command (for url links)"
+\href{${1:url}}{${2:display name}}$0
+endsnippet
+
+snippet beg "Environment"
+\begin{${1:name}}
+    ${0}
+\end{$1}
+endsnippet
+
+snippet it "Item"
+\item 
+endsnippet
+
+snippet ite "Itemize"
+\begin{itemize}
+    \item ${0}
+\end{itemize}
+endsnippet
+
+snippet enum "Enumerate"
+\begin{enumerate}
+    \item ${0}
+\end{enumerate}
+endsnippet
+
+snippet dsc "Description"
+\begin{description}
+    \item[${1}] ${0}
+\end{description}
+endsnippet
+
+snippet tbl "Table"
+\begin{table}
+    \centering
+    \caption{$1}
+    \begin{tabular}{$2}
+        \toprule
+        $3
+        \midrule
+        $0
+        \bottomrule
+    \end{tabular}
+\end{table}
+endsnippet
+
+snippet sec "Section"
+\section{$1}$0
+endsnippet
+
+snippet sbs "Subsection"
+\subsection{$1}
+$0
+endsnippet
+
+snippet ssb "Subsubsection"
+\subsubsection{$1}
+$0
+endsnippet
+
+snippet fig "Figure"
+\begin{figure}
+    \centering
+    \includegraphics[]{}
+    \caption{${0}}
+    \label{fig:${1}}
+\end{figure}
+endsnippet
+
+snippet mpg "Minipage"
+\begin{minipage}[t]{0.48\textwidth}
+    \vspace{0pt}
+    ${0}
+\end{minipage}
+endsnippet
+
+snippet frm "Frame"
+\begin{frame}{${1}}
+    ${0}
+\end{frame}
+endsnippet
+
+
+snippet not "Note"
+\begin{note}
+\xplain{`uuidgen | tr '[A-Z]' '[a-z]'`}
+\begin{field}
+    ${1}
+\end{field}
+\begin{field}
+    ${2}
+\end{field}
+\end{note}
+${0}
+endsnippet
+
+snippet pgp "Pgfplot"
+\begin{figure}[htpb]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                xlabel=$x$,
+                ylabel=$y$,
+            ]
+            \addplot[color=blue, samples=201, domain=-1:1] {${0}};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{${2}}
+    \label{fig:${1}}
+\end{figure}
+endsnippet
+
+snippet tkz "Tkzpicture"
+\begin{figure}[htpb]
+    \centering
+    \begin{tikzpicture}
+        ${0}
+    \end{tikzpicture}
+    \caption{${2}}
+    \label{fig:${1}}
+\end{figure}
+endsnippet
+
+snippet " "Quotes" A
+\`\`${1:${VISUAL}}''${0}
+endsnippet
+

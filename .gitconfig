@@ -1,0 +1,50 @@
+[user]
+    name = Dani Martí
+    email = dani.marti.ortega@gmail.com
+[github]
+    user = djmarti
+[color]
+    ui = auto
+[color "diff"]
+    meta = green
+    frag = cyan
+    new = green
+    commit = red
+[color "branch"]
+    current = green
+    local = red
+    remote = magenta
+[color "status"]
+    updated = green
+    added = blue
+    untracked = cyan
+[color "sh"]
+    branch = red
+[core]
+    editor = nvim
+    excludesfile = /home/dmarti/.gitignore
+[difftool]
+    prompt = false
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[alias]
+    d = difftool
+    st = status
+    co = checkout
+    br = branch
+    ci = commit
+[credential]
+    helper = /usr/local/bin/git-credential-manager
+    credentialStore = gpg
+[credential "https://dev.azure.com"]
+    useHttpPath = true
+
+[merge]
+  tool = nvimdiff
+[mergetool]
+  prompt = false
+  keepBackup = false
+[mergetool "nvimdiff"]
+  layout = "LOCAL,BASE,REMOTE / MERGED"
