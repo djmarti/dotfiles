@@ -13,6 +13,8 @@ if [[ $(uname) == "Darwin" ]]; then
       $(brew --prefix)/bin  \
       ~/.local/bin/ \
       ~/bin \
+      /bin \
+      /usr/bin \
       $PATH 
 elif [[ $(uname) == "Linux" ]]; then
   set -A path\

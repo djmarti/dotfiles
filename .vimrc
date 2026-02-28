@@ -38,6 +38,14 @@ vmap <LeftRelease> "*ygv
 set linebreak           " break at word boundaries, not in middle of words
 set termguicolors
 
+let os=substitute(system('uname'), '\n', '', '')
+if os == 'Darwin'
+  set clipboard=unnamedplus
+elseif os == 'Linux'
+  set clipboard=unnamed
+endif
+
+
 " folding
 set foldenable          " enable folding
 set foldmethod=manual
