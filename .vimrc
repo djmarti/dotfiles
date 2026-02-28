@@ -321,6 +321,16 @@ noremap <leader>. :tabnext<CR>
 " nnoremap <leader>n :set nu! rnu!<CR>
 " There is a weird delay. Use 'yow' from unimpaired instead
 " nnoremap <leader>w :set wrap!<CR>
+"
+
+" Mergetool
+" Make sure the order for 1, 2, 3, matches what you configured
+" for mergetool in .gitconfig. The order below is standard.
+if &diff
+    noremap <leader>1 :diffget LOCAL<CR>
+    noremap <leader>2 :diffget BASE<CR>
+    noremap <leader>3 :diffget REMOTE<CR>
+endif
 
 " Switch syntax highlighting on, when the terminal has colors
 let NERDSpaceDelims = 1
