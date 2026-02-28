@@ -7,15 +7,25 @@ bindkey "^[[3~" delete-char
 
 cdpath=( . .. ~/ )
 
-set -A path\
-    ~/.local/bin/ \
-    ~/bin \
-    ~/.pyenv/bin \
-    ~/.juliaup/bin \
-    /opt/nvim/bin \
-    /bin /usr/bin /usr/local/bin\
-    /usr/local/sbin /sbin /usr/sbin \
-    /usr/games /usr/local/games
+if [[ $(uname) == "Darwin" ]]; then
+  set -A path\
+      $(brew --prefix coreutils)/libexec/gnubin  \
+      $(brew --prefix)/bin  \
+      ~/.local/bin/ \
+      ~/bin \
+      $PATH 
+elif [[ $(uname) == "Linux" ]]; then
+  set -A path\
+      ~/.pyenv/bin \
+      ~/.juliaup/bin \
+      ~/.local/bin/ \
+      ~/bin \
+      /opt/nvim/bin \
+      /bin /usr/bin /usr/local/bin\
+      /usr/local/sbin /sbin /usr/sbin \
+      /usr/games /usr/local/games
+fi
+
 rehash
 
 # Don't be annoying
