@@ -22,7 +22,7 @@
     branch = red
 [core]
     editor = nvim
-    excludesfile = /home/dmarti/.gitignore
+    excludesfile = ~/.gitignore
 [difftool]
     prompt = false
 [diff]
@@ -36,7 +36,7 @@
     br = branch
     ci = commit
 [credential]
-    helper = /usr/local/bin/git-credential-manager
+#    helper = git-credential-manager
     credentialStore = gpg
 [credential "https://dev.azure.com"]
     useHttpPath = true
