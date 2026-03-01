@@ -7,17 +7,9 @@ bindkey "^[[3~" delete-char
 
 cdpath=( . .. ~/ )
 
-if [[ $(uname) == "Darwin" ]]; then
+if [[ $(uname) == "Linux" ]]; then
   set -A path\
-      $(brew --prefix coreutils)/libexec/gnubin  \
-      $(brew --prefix)/bin  \
-      ~/.local/bin/ \
-      ~/bin \
-      /bin \
-      /usr/bin \
-      $PATH 
-elif [[ $(uname) == "Linux" ]]; then
-  set -A path\
+      ~/.fzf/bin/ \
       ~/.pyenv/bin \
       ~/.juliaup/bin \
       ~/.local/bin/ \
@@ -26,6 +18,15 @@ elif [[ $(uname) == "Linux" ]]; then
       /bin /usr/bin /usr/local/bin\
       /usr/local/sbin /sbin /usr/sbin \
       /usr/games /usr/local/games
+elif [[ $(uname) == "Darwin" ]]; then
+  set -A path\
+      $(brew --prefix coreutils)/libexec/gnubin  \
+      $(brew --prefix)/bin  \
+      ~/.local/bin/ \
+      ~/bin \
+      /bin \
+      /usr/bin \
+      $PATH 
 fi
 
 rehash
@@ -210,14 +211,13 @@ compinit
 autoload -Uz vcs_info
 
 # Reminders
-if [ -f "/usr/bin/remind" ]; then
-    /usr/bin/remind -h "$HOME/.reminders"
+if command -v remind > /dev/null 2>&1; then
+    remind -h "$HOME/.reminders"
 fi
 # Only if we running interactively
 if [[ -o interactive ]] then
-    if [ -f "/usr/bin/task" ]; then
-        /usr/bin/task rc.verbose=nothing
-        # echo ""
+    if command -v task > /dev/null 2>&1; then
+        task rc.verbose=nothing
     fi
     if [[ -z "$TMUX" ]]; then
         exec (tmux attach || tmux new-session)
@@ -225,7 +225,7 @@ if [[ -o interactive ]] then
 fi
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 bindkey -r '\ec'  # annoying default
 bindkey '\ed' fzf-cd-widget
 bindkey '\ef' fzf-file-widget
