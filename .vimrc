@@ -24,6 +24,7 @@ set title               " change the terminal's title
 set noerrorbells        " again, don't beep
 set t_Co=256
 set wildmenu            " magic completion at the : command line
+set wildignore+=*/.git/**,*/.venv/**,*/dev/**,*/target/**,*/deps/**,*/_build/**,*/node_modules/**,*/__pycache__/**,*.json,*.lock,*.jpg,*.png,*.ico,*.jpeg,*.svg,*.ttf
 set lazyredraw          " redraw only when necessary
 " Complete longest string, list alternatives, then complete next full match, cycling back to the  original string.
 set wildmode=list:longest,full
@@ -115,6 +116,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-markdown'
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-vinegar'
+    Plug 'tpope/vim-surround'
     Plug 'vim-scripts/YankRing.vim'
     Plug 'subnut/nvim-ghost.nvim'
     Plug 'Vimjas/vim-python-pep8-indent'
@@ -181,18 +183,11 @@ set softtabstop=4       " let backspace delete indent
 if executable('rg')
   " Use rg over ag
   set grepprg=rg\ --vimgrep\ --no-heading\ --color=never\ --smart-case
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
 elseif executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
 else
   set grepprg=grep\ -nH\ $*
-  let g:ctrlp_clear_cache_on_exit = 0
 endif
 
 " Jump to line and column (`) is more useful than to line only (').
