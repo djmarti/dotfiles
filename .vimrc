@@ -34,7 +34,6 @@ set sidescroll=5        " minimal number of columns to scroll horizontally
 set signcolumn=auto
 set undolevels=500      " use many levels of undo
 set modeline            " read modeline at the end of the file
-set clipboard=unnamed
 vmap <LeftRelease> "*ygv 
 set linebreak           " break at word boundaries, not in middle of words
 set termguicolors
@@ -81,8 +80,6 @@ cnoremap <C-p> <UP>
 cnoremap <C-n> <Down>
 
 let mapleader="\<space>"
-
-let g:python3_host_prog = '/usr/bin/python3'
 
 " vimwiki has a disruptive default: <Tab> goes to next link
 nmap <leader>nl <Plug>VimwikiNextLink'
@@ -364,7 +361,7 @@ let g:UltiSnipsExpandTrigger = '<Tab>'
 let g:UltiSnipsJumpForwardTrigger = 'jk'
 let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 let g:UltiSnipsRemoveSelectModeMappings = 0
-let g:UltiSnipsSnippetDirectories = [vimrc#path('ultisnips')]
+let g:UltiSnipsSnippetDirectories = ['ultisnips']
 nnoremap <leader>es :UltiSnipsEdit!<cr>
 
 set background=dark
