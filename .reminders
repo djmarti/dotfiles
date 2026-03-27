@@ -54,9 +54,6 @@ FSET t() iif($Daemon > 0, "%1", "%b %2")
 REM Sat Sun PS [psshade(95)]
 REM [trigger(realtoday())] SPECIAL SHADE 227 179 226
 
-include /home/dmarti/.remind/events.txt
-include /home/dmarti/.remind/anniversaries.txt
-
 # Set longitude/latitude for sunrise/sunset functions
 # New York, Wasington Square
 SET $LongDeg 73

@@ -81,6 +81,7 @@ cnoremap <C-n> <Down>
 
 let mapleader="\<space>"
 
+let g:python3_host_prog = '/Users/dani/.pyenv/shims/python3'
 " vimwiki has a disruptive default: <Tab> goes to next link
 nmap <leader>nl <Plug>VimwikiNextLink'
 nmap <leader>pl <Plug>VimwikiPrevLink'
@@ -92,6 +93,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'goerz/jupytext.vim'
     Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
+    " Plug 'iamcco/mathjax-support-for-mkdp'
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
     Plug 'jamessan/vim-gnupg'
     Plug 'jpalardy/vim-slime'

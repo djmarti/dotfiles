@@ -9,7 +9,7 @@ set keywordprg=dict
 let g:markdown_fenced_languages = ['python', 'bash=sh', 'scala', 'sql', 'diff', 'haskell']
 
 let g:mkdp_theme = 'dark'
-let g:mkdp_markdown_css = expand('~/.config/nvim/css/markdown.css')
+" let g:mkdp_markdown_css = expand('~/.config/nvim/css/markdown.css')
 
 " do not use conceal feature, the implementation is not so good
 let b:vim_markdown_conceal = 0

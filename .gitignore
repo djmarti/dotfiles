@@ -19,7 +19,11 @@ __pycache__/
 lolox*
 *~
 *~~
+.envrc
+.vscode/**
 build*
+**/my_scripts/*
+nul
 *.iml
 *.swp
 *.npy

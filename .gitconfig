@@ -1,6 +1,6 @@
 [user]
     name = Dani Martí
-    email = dani.marti.ortega@gmail.com
+    email = daniel@tetrax.ai
 [github]
     user = djmarti
 [color]
@@ -38,9 +38,8 @@
 [credential]
 #    helper = git-credential-manager
     credentialStore = gpg
-[credential "https://dev.azure.com"]
-    useHttpPath = true
-
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [merge]
   tool = nvimdiff
 [mergetool]
@@ -48,3 +47,5 @@
   keepBackup = false
 [mergetool "nvimdiff"]
   layout = "LOCAL,BASE,REMOTE / MERGED"
+[credential "https://dev.azure.com"]
+	useHttpPath = true

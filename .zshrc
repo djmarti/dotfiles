@@ -21,12 +21,15 @@ if [[ $(uname) == "Linux" ]]; then
 elif [[ $(uname) == "Darwin" ]]; then
   set -A path\
       $(brew --prefix coreutils)/libexec/gnubin  \
+      $(brew --prefix findutils)/libexec/gnubin  \
       $(brew --prefix)/bin  \
       ~/.local/bin/ \
       ~/bin \
+      /sbin \
       /bin \
       /usr/bin \
-      $PATH 
+      ~/src/software/google-cloud-sdk/bin \
+      $PATH
 fi
 
 rehash
@@ -229,3 +232,9 @@ source <(fzf --zsh)
 bindkey -r '\ec'  # annoying default
 bindkey '\ed' fzf-cd-widget
 bindkey '\ef' fzf-file-widget
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/dani/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/dani/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/dani/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/dani/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
