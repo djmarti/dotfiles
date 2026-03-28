@@ -1,0 +1,15 @@
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+stterm*geometry: 100x34+0+0
+Vim*useSchemes:                 all
+Vim*sgiMode:                    true
+Vim*useEnhancedFSB:             true
+Ipython*geometry: 600x400-30+30
+Tk*geometry: 600x400-30+30
+
+! #include ".Xresources.d/urxvt"
+! #include ".Xresources.d/colors"

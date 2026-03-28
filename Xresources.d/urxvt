@@ -1,0 +1,19 @@
+URxvt.termName: rxvt-256color
+URxvt.depth: 32
+URxvt.scrollBar: False
+URxvt.internalBorder: 5
+URxvt.background: whitesmoke
+URxvt.foreground: black
+URxvt.font: xft:Inconsolata:pixelsize=20
+URxvt.intensityStyles: false
+URxvt*cursorColor: #ffA449
+URxvt*cursorColor2: black
+URxvt*higlightColor: yellow
+URxvt*letterSpace: -1
+URxvt*allow_bold: true
+URxvt.perl-ext-common: default,resize-font
+! URxvt.url-select.launcher: /usr/bin/xdg-open
+! URxvt.keysym.M-u: perl:url-select:select_next
+! URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.resize-font.smaller: C-Down 
+URxvt.resize-font.bigger: C-Up 
