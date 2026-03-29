@@ -81,7 +81,7 @@ cnoremap <C-n> <Down>
 
 let mapleader="\<space>"
 
-let g:python3_host_prog = '/Users/dani/.pyenv/shims/python3'
+let g:python3_host_prog = '$HOME/.pyenv/shims/python3'
 " vimwiki has a disruptive default: <Tab> goes to next link
 nmap <leader>nl <Plug>VimwikiNextLink'
 nmap <leader>pl <Plug>VimwikiPrevLink'
