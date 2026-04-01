@@ -27,7 +27,7 @@ elif [[ $(uname) == "Darwin" ]]; then
       ~/bin \
       /sbin \
       /bin \
-      /usr/bin
+      /usr/bin \
       $PATH
 fi
 
