@@ -27,8 +27,7 @@ elif [[ $(uname) == "Darwin" ]]; then
       ~/bin \
       /sbin \
       /bin \
-      /usr/bin \
-      ~/src/software/google-cloud-sdk/bin \
+      /usr/bin
       $PATH
 fi
 
@@ -233,8 +232,14 @@ bindkey -r '\ec'  # annoying default
 bindkey '\ed' fzf-cd-widget
 bindkey '\ef' fzf-file-widget
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/dani/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/dani/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+# Google Cloud CLI
+google_cloud_src="${HOME}/src/google-cloud-sdk"
+google_cloud_snippets=(
+    "path.zsh.inc"
+    "completion.zsh.inc"
+)
+for f in ${google_cloud_snippets}; do
+    script=${google_cloud_src}/$f
+    [[ -f ${script} ]] && . ${script}
+done
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/dani/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/dani/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
