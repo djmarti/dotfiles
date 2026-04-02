@@ -1,5 +1,5 @@
 lua << EOF
-require'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.config").setup({
   -- A list of parser names, or "all" (the listed parsers MUST always be installed)
   ensure_installed = { "c", "lua", "sql", "vim", "vimdoc", "scala", "python", "query", "markdown", "markdown_inline" },
 
@@ -39,6 +39,5 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
-}
+})
 EOF
-
