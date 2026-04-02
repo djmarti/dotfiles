@@ -66,10 +66,11 @@ if &t_Co > 2 || has('gui_running')
 endif
 
 
-set statusline =
-" Buffer number
+" Sinnce 0.12, Nvim's default statusline is implemented as a special
+" 'statusline' string. (rather than as an internal C routine). Setting
+" 'statusline' to empty now defaults to that string.
 " File description
-set statusline +=%f\ %h%m%r%w
+set statusline =%f\ %h%m%r%w
 " Filetype
 set statusline +=%y
 " Name of the current branch (needs fugitive.vim)
@@ -122,6 +123,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'subnut/nvim-ghost.nvim'
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'nvim-treesitter/nvim-treesitter'
+    Plug 'coder/claudecode.nvim'
 call plug#end()
 
 if exists('$TMUX')
