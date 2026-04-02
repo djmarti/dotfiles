@@ -41,7 +41,10 @@ set termguicolors
 let os=substitute(system('uname'), '\n', '', '')
 if os == 'Darwin'
   set clipboard=unnamedplus
+  let g:python3_host_prog = '$HOME/.pyenv/shims/python3'
 elseif os == 'Linux'
+  " no need to set up python3_host_prog because
+  " pynvim-python is available.
   set clipboard=unnamed
 endif
 
@@ -81,7 +84,6 @@ cnoremap <C-n> <Down>
 
 let mapleader="\<space>"
 
-let g:python3_host_prog = '$HOME/.pyenv/shims/python3'
 " vimwiki has a disruptive default: <Tab> goes to next link
 nmap <leader>nl <Plug>VimwikiNextLink'
 nmap <leader>pl <Plug>VimwikiPrevLink'
