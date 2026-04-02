@@ -15,9 +15,7 @@ if [[ $(uname) == "Linux" ]]; then
       ~/.local/bin/ \
       ~/bin \
       /opt/nvim/bin \
-      /bin /usr/bin /usr/local/bin\
-      /usr/local/sbin /sbin /usr/sbin \
-      /usr/games /usr/local/games
+      $HOME
 elif [[ $(uname) == "Darwin" ]]; then
   set -A path\
       $(brew --prefix coreutils)/libexec/gnubin  \
