@@ -15,7 +15,8 @@ if [[ $(uname) == "Linux" ]]; then
       ~/.local/bin/ \
       ~/bin \
       /opt/nvim/bin \
-      $HOME
+      $path
+
 elif [[ $(uname) == "Darwin" ]]; then
   set -A path\
       $(brew --prefix coreutils)/libexec/gnubin  \
@@ -23,10 +24,7 @@ elif [[ $(uname) == "Darwin" ]]; then
       $(brew --prefix)/bin  \
       ~/.local/bin/ \
       ~/bin \
-      /sbin \
-      /bin \
-      /usr/bin \
-      $PATH
+      $path
 fi
 
 rehash
@@ -44,15 +42,13 @@ fi
 for color in BLACK RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
     eval PR_BOLD_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
     eval PR_$color='%{$fg[${(L)color}]%}'
-    export PR_BOLD_$color
-    export PR_$color
 done
 
-export PR_NO_COLOR="%{$terminfo[sgr0]%}"
+PR_NO_COLOR="%{$terminfo[sgr0]%}"
 
 # # Prompt and PS1 are equivalent!
 prompt="${PR_RED}%j ${PR_BOLD_BLUE}%c${PR_NO_COLOR} %# "
-prompt3='%{fc%}Do you mean: %R ?(y|n|e)%{gg%} '
+SPROMPT="correct %F{red}%R%f to %F{green}%r%f? [nyae] "
 unset RPROMPT
 
 if [[ -x $(which dircolors) ]]; then
@@ -73,7 +69,6 @@ HISTFILE=~/.history
 # Too large values make zsh sluggish
 HISTSIZE=16000
 SAVEHIST=15000
-HISTCONTROL=ignorebot
 setopt histignoredups
 setopt extended_history   # Save beginning timestamp and duration in the hist file
 setopt hist_expire_dups_first
@@ -104,7 +99,6 @@ setopt complete_in_word   # ~/Dev/pro<Tab> --> ~/Development/project
 setopt correct            # spell check for commands only
 setopt extended_glob      # Chars '#', '~' and '^' treated as parts of patterns for fname generation
 setopt glob_complete      # Cycle through matches
-setopt glob_dots          # Do not require a leading '.' in a filename to be matched explicitly.,
 setopt hash_cmds          # Remember the location of each command the 1st time it is executed.
 setopt hash_dirs          # Hash the directory containing a command name that is hashed
 unsetopt ignore_eof       # Do not exit on end-of-file
@@ -137,17 +131,13 @@ bindkey -s '\C-G' 'cd ..''\C-M'
 bindkey -s '\C-O' 'ranger''\C-M'
 bindkey '\C-\S-l' clear-screen
 
-unset ignoreeof
-
-limit coredumpsize 0
 export EDITOR=nvim
 export VISUAL=nvim
 export LESS="-r"
 export CVS_RSH="ssh"
 unset LESS_OPEN
 export GREP_COLORS='mt=1;32'
-GPG_TTY=$(tty)
-export GPG_TTY
+export GPG_TTY=$(tty)
 
 # stty sane
 stty stop undef # unmap ctrl-s, to use vim-ipython
@@ -177,10 +167,9 @@ zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character 
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*'
 zstyle ':completion:*' menu select=long
 zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
-zstyle ':completion:*' use-compctl true
 zstyle ':completion:*:descriptions' format '%B%d%b'
 zstyle ':completion:*:messages' format '%B%d%b'
-zstyle ':completion::*' use-cache on
+zstyle ':completion:*' use-cache on
 
 
 autoload -U edit-command-line
@@ -194,9 +183,6 @@ bindkey "^[m" copy-earlier-word
 ## smart urls: automatically quote metacharacters in typed/pasted urls
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
-
-## jobs
-setopt long_list_jobs
 
 autoload -U zsh-mime-setup
 zsh-mime-setup
