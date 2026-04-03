@@ -24,6 +24,7 @@ elif [[ $(uname) == "Darwin" ]]; then
       $(brew --prefix)/bin  \
       ~/.local/bin/ \
       ~/bin \
+      ~/.fzf/bin/ \
       $path
 fi
 
