@@ -34,14 +34,14 @@ set sidescroll=5        " minimal number of columns to scroll horizontally
 set signcolumn=auto
 set undolevels=500      " use many levels of undo
 set modeline            " read modeline at the end of the file
-vmap <LeftRelease> "*ygv 
+vmap <LeftRelease> "*ygv
 set linebreak           " break at word boundaries, not in middle of words
 set termguicolors
 
 let os=substitute(system('uname'), '\n', '', '')
 if os == 'Darwin'
   set clipboard=unnamedplus
-  let g:python3_host_prog = '$HOME/.pyenv/shims/python3'
+  let g:python3_host_prog = expand('$HOME/.pyenv/shims/python3')
 elseif os == 'Linux'
   " no need to set up python3_host_prog because
   " pynvim-python is available.
@@ -86,8 +86,8 @@ cnoremap <C-n> <Down>
 let mapleader="\<space>"
 
 " vimwiki has a disruptive default: <Tab> goes to next link
-nmap <leader>nl <Plug>VimwikiNextLink'
-nmap <leader>pl <Plug>VimwikiPrevLink'
+nmap <leader>nl <Plug>VimwikiNextLink
+nmap <leader>pl <Plug>VimwikiPrevLink
 
 call plug#begin('~/.vim/plugged')
     Plug 'neovim/nvim-lspconfig'
@@ -156,7 +156,6 @@ source ~/.vim/nvim_lsp.vim
 source ~/.vim/nvim_linters.vim
 source ~/.vim/treesitter.vim
 set runtimepath+=/usr/share/nvim/runtime/
-set runtimepath+=~/.fzf/bin/
 
 
 let g:yankring_history_file = '.vim/yankring_history'
@@ -199,6 +198,8 @@ nnoremap ' `
 nnoremap ` '
 
 " Backup system
+set undofile
+set backup
 set undodir=$HOME/.vim/tmp/undo//      " undo files
 set backupdir=$HOME/.vim/tmp/backups// " backups
 set directory=$HOME/.vim/tmp/swap//    " swap files
@@ -266,12 +267,12 @@ if has('autocmd') && !exists('autocommands_loaded')
   augroup code
     autocmd!
     autocmd BufReadPre SConstruct set filetype=python makeprg=scons
-  autocmd FileType cpp,c setlocal shiftwidth=8
-  autocmd FileType cpp,c,py setlocal nu
+    autocmd FileType cpp,c setlocal shiftwidth=8
+    autocmd FileType cpp,c,python setlocal nu
     autocmd BufRead,BufNewFile *.asy :set ft=asy
     autocmd BufRead,BufNewFile *.scala,*.sc,*.sbt :set ft=scala
   " detect comments in jsons
-  autocmd FileType json syntax match Comment +\/\/.\+$+
+    autocmd FileType json syntax match Comment +\/\/.\+$+
   augroup END
 
   augroup xwiki
@@ -293,7 +294,7 @@ if has('autocmd') && !exists('autocommands_loaded')
     autocmd! FileType fzf
     autocmd  FileType fzf set laststatus=0 noshowmode noruler
         \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-  augroup fzfgroup
+  augroup END
 
   autocmd BufReadPost *.ged setlocal filetype=gedcom formatprg=gedcom_indent
   " When editing a file, always jump to the last known cursor position.
@@ -330,10 +331,6 @@ if &diff
     noremap <leader>3 :diffget REMOTE<CR>
 endif
 
-" Switch syntax highlighting on, when the terminal has colors
-let NERDSpaceDelims = 1
-let NERDTreeMapActivateNode = 'l'
-let NERDTreeMapCloseDir = 'h'
 
 " Disable increment / decrement.
 " map <C-a> <Nop>
