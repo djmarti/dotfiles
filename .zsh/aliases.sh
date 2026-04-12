@@ -1,4 +1,7 @@
 #!/bin/zsh
+if [[ $(uname) == "Darwin" ]]; then
+    alias see='open'
+fi
 alias d='dirs -v | head -n 10'
 alias h=history
 alias j=jobs
@@ -8,7 +11,7 @@ alias lx='elinks'
 alias m='mutt'
 alias I='ipython --pylab'
 alias v='run-mailcap --action=view'
-alias s='open *.pdf(om[1])&'
+alias s='zathura *.pdf(om[1]) &'
 alias mv='nocorrect mv'
 alias cp='nocorrect cp'
 alias mkdir='nocorrect mkdir'
@@ -27,7 +30,6 @@ alias vimdiff='nvim -d'
 alias pbcopy='xclip -selection clipboard -i'
 alias pbpaste='xclip -selection clipboard -o'
 
-# alias stylua='npx @johnnymorganz/stylua-bin'
 # Global aliases -- These do not have to be
 # at the beginning of the command line.
 alias -g L='| less -r'
@@ -39,6 +41,3 @@ alias -g P='| pbcopy'
 # Suffix aliases
 alias -s {txt,md,tex,json}=vim
 
-if [[ $(uname) == "Darwin" ]]; then
-    alias see='open'
-fi
