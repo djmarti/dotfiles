@@ -59,13 +59,13 @@ EXEC 00;32
 # List any file extensions like '.gz' or '.tar' that you would like ls
 # to colorize below. Put the extension, a space, and the color init string.
 # (and any comments you want to add after a '#')
-.cmd 01;30 # executables (bright black)
-.exe 01;30
-.com 01;30
-.btm 01;30
-.bat 01;30
-.sh  01;30
-.py  01;30
+.cmd 01;36 # executables (bright black)
+.exe 01;36
+.com 01;36
+.btm 01;36
+.bat 01;36
+.sh  01;36
+.py  01;36
 .tar 00;31 # archives or compressed (red)
 .tgz 00;31
 .deb 00;31
