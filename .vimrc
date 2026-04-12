@@ -123,7 +123,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'subnut/nvim-ghost.nvim'
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'nvim-treesitter/nvim-treesitter'
-    Plug 'coder/claudecode.nvim'
 call plug#end()
 
 if exists('$TMUX')
