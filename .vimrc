@@ -147,6 +147,9 @@ if exists('$TMUX')
   nnoremap <silent> <C-S-l> :redraw<cr>
 endif
 
+" TTY-based pinentry like pinentry-curses won't work.
+" https://tinyurl.com/3v8e4urv.  Make sure you have
+" an external pinentry program.
 if exists('$PINENTRY_USER_DATA')
   let g:GPGExecutable = "PINENTRY_USER_DATA='' gpg --trust-model always"
 endif
@@ -217,8 +220,8 @@ endif
 
 " Set spelling language.
 set spelllang=en_us
-map <silent> <F12> b"*yw<Esc>:!/usr/bin/dict <C-R>* <bar> /usr/bin/colorit <bar> /usr/bin/less -R<CR>
-imap <silent> <F12> <ESC>b"*yw<Esc>:!/usr/bin/dict <C-R>* <bar> /usr/bin/colorit <bar> /usr/bin/less -R<CR>a
+map <silent> <F12> b"*yw<Esc>:!dict <C-R>* <bar> colorit <bar> less -R<CR>
+imap <silent> <F12> <ESC>b"*yw<Esc>:!dict <C-R>* <bar> colorit <bar> less -R<CR>a
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
