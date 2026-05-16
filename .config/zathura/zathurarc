@@ -35,3 +35,9 @@ map T toggle_inputbar
 map _ mark_evaluate
 map <C-Button4> zoom in
 map <C-Button5> zoom out
+
+
+# Slow rendering problem
+set render-optimizations true
+set scroll-step 50
+set scroll-full-overlap 0.01
