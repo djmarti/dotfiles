@@ -6,8 +6,6 @@
 export FZF_DEFAULT_COMMAND='rg --files --ignore --hidden --follow'
 export FZF_DEFAULT_OPTS="
   --bind 'ctrl-n:down,ctrl-p:up,alt-n:preview-down,alt-p:preview-up'
-  --color fg:239,bg:253,hl:24,fg+:239,bg+:3,hl+:4
-  --color info:24,prompt:2,spinner:208,pointer:1,marker:208
   --reverse --height 40%
   "
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
