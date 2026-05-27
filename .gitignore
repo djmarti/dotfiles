@@ -34,3 +34,6 @@ nul
 *.bz2
 export
 tags
+
+**/.claude/settings.local.json
+**/.claude/worktrees/
