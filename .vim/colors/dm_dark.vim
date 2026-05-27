@@ -186,7 +186,7 @@ call s:my_highlight('ToolbarLine', s:palette.fg1, s:palette.bg3)
 call s:my_highlight('SignColumn', s:palette.fg0, s:palette.none)
 call s:my_highlight('FoldColumn', s:palette.grey0, s:palette.none)
 call s:my_highlight('IncSearch', s:palette.none, s:palette.bg_claude_green)
-call s:my_highlight('Search', s:palette.none, s:palette.bg_dark_blueish)
+call s:my_highlight('Search', s:palette.none, s:palette.bg3)
 highlight! link CurSearch IncSearch
 call s:my_highlight('ColorColumn', s:palette.none, s:palette.bg2)
 call s:my_highlight('Conceal', s:palette.grey0, s:palette.none)
