@@ -40,6 +40,7 @@ let s:palette = {
  \ 'bg5':              ['#5a524c',   '239'],
  \ 'bg_dark_orange':   ['#312911',   '58'],
  \ 'bg_dark_green':    ['#3a4844',   '58'],
+ \ 'bg_claude_green':  ['#006000',   '22'],
  \ 'bg_dark_blueish':  ['#343735',   '58'],
  \ 'bg_dark_yellow':   ['#312911',   '58'],
  \ 'bg_visual':        ['#6a5b52',   '241'],
@@ -184,7 +185,7 @@ call s:my_highlight('Folded', s:palette.grey1, s:palette.bg2)
 call s:my_highlight('ToolbarLine', s:palette.fg1, s:palette.bg3)
 call s:my_highlight('SignColumn', s:palette.fg0, s:palette.none)
 call s:my_highlight('FoldColumn', s:palette.grey0, s:palette.none)
-call s:my_highlight('IncSearch', s:palette.none, s:palette.bg_dark_green)
+call s:my_highlight('IncSearch', s:palette.none, s:palette.bg_claude_green)
 call s:my_highlight('Search', s:palette.none, s:palette.bg_dark_blueish)
 highlight! link CurSearch IncSearch
 call s:my_highlight('ColorColumn', s:palette.none, s:palette.bg2)
