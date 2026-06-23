@@ -228,3 +228,4 @@ for f in ${google_cloud_snippets}; do
     [[ -f ${script} ]] && . ${script}
 done
 
+cd ~/app

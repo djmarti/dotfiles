@@ -21,4 +21,4 @@ let g:vim_markdown_math = 0
 " markdown-preview
 let g:mkdp_browser = 'firefox'
 let g:mkdp_refresh_slow = 1  " refresh when write or normal model
-nmap <leader>p <Plug>MarkdownPreviewToggle
+nmap <buffer> <leader>p <Plug>MarkdownPreview

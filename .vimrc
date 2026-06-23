@@ -24,7 +24,7 @@ set title               " change the terminal's title
 set noerrorbells        " again, don't beep
 set t_Co=256
 set wildmenu            " magic completion at the : command line
-set wildignore+=*/.git/**,*/.venv/**,*/dev/**,*/target/**,*/deps/**,*/_build/**,*/node_modules/**,*/__pycache__/**,*.json,*.lock,*.jpg,*.png,*.ico,*.jpeg,*.svg,*.ttf
+set wildignore+=*/.git/**,*/.venv/**,*/dev/**,*/target/**,*/deps/**,*/_build/**,*/node_modules/**,*/__pycache__/**,*.lock,*.jpg,*.png,*.ico,*.jpeg,*.ttf
 set lazyredraw          " redraw only when necessary
 " Complete longest string, list alternatives, then complete next full match, cycling back to the  original string.
 set wildmode=list:longest,full
@@ -85,10 +85,6 @@ cnoremap <C-n> <Down>
 
 let mapleader="\<space>"
 
-" vimwiki has a disruptive default: <Tab> goes to next link
-nmap <leader>nl <Plug>VimwikiNextLink
-nmap <leader>pl <Plug>VimwikiPrevLink
-
 call plug#begin('~/.vim/plugged')
     Plug 'neovim/nvim-lspconfig'
     Plug 'mfussenegger/nvim-lint'
@@ -97,7 +93,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'goerz/jupytext.vim'
     Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
     " Plug 'iamcco/mathjax-support-for-mkdp'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
     Plug 'jamessan/vim-gnupg'
     Plug 'jpalardy/vim-slime'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -202,6 +198,10 @@ nnoremap ` '
 " Backup system
 set undofile
 set backup
+"Make backup before overwriting the current buffer
+set writebackup
+"Overwrite the original backup file
+set backupcopy=yes
 set undodir=$HOME/.vim/tmp/undo//      " undo files
 set backupdir=$HOME/.vim/tmp/backups// " backups
 set directory=$HOME/.vim/tmp/swap//    " swap files
@@ -286,6 +286,9 @@ if has('autocmd') && !exists('autocommands_loaded')
     autocmd!
     autocmd BufRead,BufWinEnter,BufNewFile,BufEnter *.md setlocal syntax=markdown
     autocmd FileType vimwiki setlocal syntax=markdown
+    " vimwiki has a disruptive default: <Tab> goes to next link
+    autocmd Filetype vimwiki nmap <buffer> <leader>nl <Plug>VimwikiNextLink
+    autocmd Filetype vimwiki nmap <buffer> <leader>pl <Plug>VimwikiPrevLink
   augroup END
   " Change to directory of current file automatically % is the current
   " filename ':h _%', and :p and :h are filename modifiers: :p gives
@@ -306,6 +309,10 @@ if has('autocmd') && !exists('autocommands_loaded')
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
+
+  "Meaningful backup name, ex: filename@2015-04-05.14:59
+  "&bex represents backupext, an internal vim option.
+  au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
 endif
 
 " Starting with Vim 7, the filetype of empty .tex files defaults to 'plaintex'

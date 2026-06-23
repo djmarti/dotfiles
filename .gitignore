@@ -37,3 +37,8 @@ tags
 
 **/.claude/settings.local.json
 **/.claude/worktrees/
+**/summaries/old_summaries/**
+**/labelling/results/*
+**/labelling/scripts/post_eval.sh
+**/labelling/scripts/compare_results.py
+**/labelling/scripts/recompute_metrics.py

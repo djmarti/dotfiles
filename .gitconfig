@@ -31,6 +31,7 @@
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [alias]
     d = difftool
+    l = log
     st = status
     co = checkout
     br = branch

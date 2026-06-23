@@ -6,7 +6,7 @@ alias d='dirs -v | head -n 10'
 alias h=history
 alias j=jobs
 alias l='ls -lht --si --color=auto'
-alias ls='ls --si --color=auto -FCBN'
+alias ls='ls --si --color=auto -FCN'
 alias lx='elinks'
 alias m='mutt'
 alias I='ipython --pylab'
