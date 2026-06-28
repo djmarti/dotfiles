@@ -27,8 +27,11 @@ alias dog='highlight -O ansi'   # dogs are cooler than cats
 alias ccat='pygmentize -g'
 alias vimdiff='nvim -d'
 
-alias pbcopy='xclip -selection clipboard -i'
-alias pbpaste='xclip -selection clipboard -o'
+
+if [[ $(uname) == "Linux" ]]; then
+    alias pbcopy='xclip -selection clipboard -i'
+    alias pbpaste='xclip -selection clipboard -o'
+fi
 
 # Global aliases -- These do not have to be
 # at the beginning of the command line.
