@@ -41,7 +41,8 @@ set termguicolors
 let os=substitute(system('uname'), '\n', '', '')
 if os == 'Darwin'
   set clipboard=unnamedplus
-  let g:python3_host_prog = expand('$HOME/.pyenv/shims/python3')
+  let g:python3_host_prog = '/usr/local/bin/python3.13'
+  "let g:python3_host_prog = expand('$HOME/.pyenv/shims/python3')
 elseif os == 'Linux'
   " no need to set up python3_host_prog because
   " pynvim-python is available.
@@ -93,7 +94,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'goerz/jupytext.vim'
     Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
     " Plug 'iamcco/mathjax-support-for-mkdp'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+    "Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+    Plug 'selimacerbas/markdown-preview.nvim'
+    Plug 'selimacerbas/live-server.nvim'
     Plug 'jamessan/vim-gnupg'
     Plug 'jpalardy/vim-slime'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
