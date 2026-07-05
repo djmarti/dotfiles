@@ -20,7 +20,6 @@ lolox*
 *~
 *~~
 .envrc
-.vscode/**
 build*
 **/my_scripts/*
 nul
