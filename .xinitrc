@@ -6,7 +6,7 @@ export LC_CTYPE=en_US.UTF-8
 # Remove Gnome input-method crap
 # export GTK_IM_MODULE=xim
 setxkbmap -layout us,us -variant ,intl -option grp:shifts_toggle
-xmodmap .xmodmap
+#xmodmap .xmodmap
 xsetroot -solid "#7291a4" # "#338CB4"
 xsetroot -cursor_name left_ptr
 xset dpms 500 1000 2000
