@@ -122,6 +122,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'subnut/nvim-ghost.nvim'
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'nvim-treesitter/nvim-treesitter'
+    Plug 'folke/snacks.nvim'
+    Plug 'coder/claudecode.nvim'
 call plug#end()
 
 if exists('$TMUX')
@@ -156,6 +158,7 @@ endif
 source ~/.vim/nvim_lsp.vim
 source ~/.vim/nvim_linters.vim
 source ~/.vim/treesitter.vim
+source ~/.vim/claudecode.vim
 set runtimepath+=/usr/share/nvim/runtime/
 
 
