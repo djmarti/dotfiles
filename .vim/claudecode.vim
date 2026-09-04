@@ -1,7 +1,11 @@
 lua << EOF
 local ok, claudecode = pcall(require, "claudecode")
 if ok then
-  claudecode.setup()
+  claudecode.setup({
+    terminal = {
+      provider = "none",
+    },
+  })
 end
 EOF
 
