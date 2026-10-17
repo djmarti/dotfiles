@@ -1,13 +1,14 @@
 set loadpath '~/.config/gnuplot'  # for further, figure-specific configs
-# set term wxt size 1000, 720 font "Nimbus Sans L,20"
+#set term wxt size 1000, 720 font "HelveticaNeue,20"
+set terminal pngcairo size 1000, 720 font "HelveticaNeue,20"
 # Using default seaborn palette colors
-set linetype 1 lc rgb '#444c72b0' lw 3
-set linetype 2 lc rgb '#4455a868' lw 3
-set linetype 3 lc rgb '#44c44e52' lw 3
-set linetype 4 lc rgb '#448172b2' lw 3
-set linetype 5 lc rgb '#44ccb974' lw 3
-set linetype 6 lc rgb '#4464b5cd' lw 3
-set linetype 7 lc rgb '#44ac6240' lw 3
+set linetype 1 lc rgb '#444c72b0' lw 3 pt 6
+set linetype 2 lc rgb '#4455a868' lw 3 pt 6
+set linetype 3 lc rgb '#44c44e52' lw 3 pt 6
+set linetype 4 lc rgb '#448172b2' lw 3 pt 6
+set linetype 5 lc rgb '#44ccb974' lw 3 pt 6
+set linetype 6 lc rgb '#4464b5cd' lw 3 pt 6
+set linetype 7 lc rgb '#44ac6240' lw 3 pt 6
 #
 #
 # set style line 1 lc rgb '#4c72b0' lt 1 lw 3
