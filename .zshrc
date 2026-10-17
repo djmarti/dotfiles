@@ -10,7 +10,7 @@ cdpath=( . .. ~/ )
 if [[ $(uname) == "Linux" ]]; then
   set -A path\
       ~/.fzf/bin/ \
-      ~/.pyenv/bin \
+      #~/.pyenv/bin \
       ~/.juliaup/bin \
       ~/.local/bin/ \
       ~/bin \
@@ -56,9 +56,11 @@ if [[ -x $(which dircolors) ]]; then
     eval $(dircolors ~/.colourrc -b)
 fi
 
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
+# We use uv now
+#
+# if command -v pyenv 1>/dev/null 2>&1; then
+#     eval "$(pyenv init -)"
+# fi
 
 if command -v direnv 1>/dev/null 2>&1; then
     eval "$(direnv hook zsh)"
@@ -129,7 +131,7 @@ bindkey '\C-f' forward-word
 bindkey '\C-b' backward-word
 bindkey '\C-y' push-line-or-edit
 bindkey -s '\C-G' 'cd ..''\C-M'
-bindkey -s '\C-O' 'ranger''\C-M'
+#bindkey -s '\C-O' 'ranger''\C-M'
 bindkey '\C-\S-l' clear-screen
 
 export EDITOR=nvim
