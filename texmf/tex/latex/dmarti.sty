@@ -1,0 +1,39 @@
+\ProvidesPackage{dmarti}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\E}{\mathrm{e}}
+\newcommand{\I}{\mathrm{i}}
+\newcommand{\avg}[1]{\langle #1 \rangle}
+\newcommand{\davg}[1]{\langle\hspace{-.25em}\langle #1 \rangle\hspace{-.25em}\rangle}
+% Convenient definitions
+\renewcommand{\d}[1]{\mathrm{d}#1}
+\newcommand{\uni}[1]{\,\mathrm{#1}}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\EE}{E}
+\DeclareMathOperator{\Tr}{Tr}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\definecolor{blau}{rgb}{0.0,0.26,0.46} % My blue default
+\definecolor{gray70}{gray}{0.3}   % gray model: 0=black, 1=white
+
+\tikzset{
+  line cap=round,
+  line join=round
+}
+
+\pgfplotsset{
+  compat=1.18,
+  width=7cm,
+  height=5cm,
+  axis lines = left,
+  enlarge x limits = true,
+  enlarge y limits = true,
+  axis line style = {-, gray70},
+  tick label style = {gray70, font=\footnotesize},
+  tick style = {gray70},
+  xtick align = outside,
+  ytick align = outside,
+  major tick length = 0.8mm,
+  minor tick length = 0.5mm
+}
+\usetikzlibrary{arrows,arrows.meta}

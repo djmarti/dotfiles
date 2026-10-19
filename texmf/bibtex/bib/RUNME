@@ -1,0 +1,11 @@
+#!/bin/sh
+curr_pwd=`pwd`
+bib_pwd=`dirname $0`
+cd "$bib_pwd"
+cp mybib.bib mybib_bak.bib
+bibtex_process.sh mybib.bib
+rm mybib_abbrv.bib
+/home/dmarti/bin/biborder mybib.bib > lolox
+mv lolox mybib.bib
+canonize_jnames.py mybib.bib > mybib_abbrv.bib
+cd "$curr_pwd"
